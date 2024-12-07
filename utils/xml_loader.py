@@ -7,7 +7,7 @@ class HandKeypointDataset(Dataset):
     def __init__(self, xml_path='xml_labels', image_dir='png', transform=None):
         """
         Args:
-            xml_path (str): Path to the XML annotation file.
+            xml_path (str): Path to the XML annotation folder.
             image_dir (str): Directory containing corresponding image files.
             transform (callable, optional): Transform to be applied on the images.
         """
@@ -20,7 +20,7 @@ class HandKeypointDataset(Dataset):
         """Parses the XML file and extracts annotations."""
         complete_dataset = []
 
-        for xml_name in os.listdir(self.xml_path)[8:11]: 
+        for xml_name in os.listdir(self.xml_path): 
             xml_path = os.path.join(self.xml_path, xml_name)
             tree = ET.parse(xml_path)
             root = tree.getroot()
